@@ -1,0 +1,234 @@
+Coding Exercise 1: Variables
+
+# Create two variables, var1 and var2, both with the same value.
+var1, var2 = 'hello'
+
+# Create two variables, num1 and num2, which multiply together to give 16.
+num1, num2 = 4
+
+
+Coding Exercise 2: Methods
+
+# Complete the method by making sure it returns 42. .
+def return_42():
+    return 42
+
+# Create a method below, called my_method, that takes two arguments and returns the result of its two arguments multiplied together.
+def my_method(arg1, arg2):
+
+    return arg1 * arg2
+
+
+Coding Exercise 3: Lists, tuples, and sets
+
+# Create a list, called my_list, with three numbers. The total of the numbers added together should be 100.
+
+my_list = [10, 40, 50]
+
+
+
+# Create a tuple, called my_tuple, with a single value in it
+
+my_tuple = (1,)
+
+
+
+# Modify set2 so that set1.intersection(set2) returns {5, 77, 9, 12}
+
+set1 = {14, 5, 9, 31, 12, 77, 67, 8}
+
+set2 = {5, 77, 9, 12}
+
+
+Coding Exercise 4: Flow control - loops and ifs
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
+# Modify the method below to make sure only even numbers are returned.
+
+def even_numbers():
+    
+    evens = []
+
+    for number in numbers:
+
+        if number % 2 == 0:
+            evens.append(number)
+
+    return evens
+
+
+
+
+# Modify the below method so that "Quit" is returned if the choice parameter is "q".
+# Don't remove the existing code
+
+def user_menu(choice):
+
+    if choice == "a":
+
+        return "Add"
+ 
+    elif choice == "q":
+
+        return "Quit"
+
+
+Bonus Exercise:
+
+def who_do_you_know():
+    # Ask user for list of people they know
+    # Split the string in to a list, remove whitespace
+    # Return list
+    list = input("Enter the people you know, separated by commas: ").strip().split(',')
+    return list
+
+def ask_user():
+    # Ask user for their name
+    # Check if their name is in the list of people they know
+    # Print out whether they know that person
+    user_name = input("What's your name: ")
+    if user_name in who_do_you_know():
+	print("You know {}!".format(user_name))
+    else:
+	print("You don't know {}.".format(user_name)) 
+
+ask_user()
+
+
+Coding Exercise 5: Dictionaries and students
+
+# Create a variable called student, with a dictionary.
+
+# The dictionary must contain three keys: 'name', 'school', and 'grades'.
+
+# The values for each must be 'Jose', 'Computing', and a tuple with the values 66, 77, and 88.
+
+student = {
+
+    'name': 'Jose',
+
+    'school': 'Computing',
+
+    'grades': (66, 77, 88)
+}
+
+
+
+# Assume the argument, data, is a dictionary.
+
+# Modify the grades variable so it accesses the 'grades' key of the data dictionary.
+
+def average_grade(data):
+
+    grades = data['grades']
+
+    return sum(grades) / len(grades)
+
+
+
+
+# Implement the function below
+
+# Given a list of students (a list of dictionaries), calculate the average grade received on an exam, for the entire class
+
+# You must add all the grades of all the students together
+
+# You must also count how many grades there are in total in the entire list
+
+def average_grade_all_students(student_list):
+
+    total = 0
+
+    count = 0
+
+    for student in student_list:
+
+        total += sum(student['grades'])
+
+        count += len(student['grades'])
+    return total / count
+
+
+Coding Exercise 6: Classes and objects
+
+class Store:
+
+    def __init__(self, name):
+
+        # You'll need 'name' as an argument to this method.
+
+        # Then, initialise 'self.name' to be the argument, and 'self.items' to be an empty list.
+
+        self.name = name
+
+        self.items = []
+
+    
+    
+    def add_item(self, name, price):
+
+        # Create a dictionary with keys name and price, and append that to self.items.
+
+        self.items.append({'name': name, 'price': price})
+
+
+
+    def stock_price(self):
+        # Add together all item prices in self.items and return the total.
+
+        return sum([item['price'] for item in self.items])
+
+
+Coding Exercise 7: @classmethod and @staticmethod
+
+class Store:
+
+    def __init__(self, name):
+
+        # You'll need 'name' as an argument to this method.
+
+        # Then, initialise 'self.name' to be the argument, and 'self.items' to be an empty list.
+
+        self.name = name
+
+        self.items = []
+
+    
+    
+    def add_item(self, name, price):
+
+        # Create a dictionary with keys name and price, and append that to self.items.
+
+        self.items.append({'name': name, 'price': price})
+
+
+
+    def stock_price(self):
+        # Add together all item prices in self.items and return the total.
+
+        return sum([item['price'] for item in self.items])
+
+    @classmethod
+
+    def franchise(cls, store):
+
+        # Return another store, with the same name as the argument's name, plus " - franchise"
+
+        # cls is a reference to the calling class, so we can use it instead of Store
+        return cls("{} - franchise".format(store.name))
+
+
+
+    @staticmethod
+
+    def store_details(store):
+
+        # Return a string representing the argument
+
+        # It should be in the format 'NAME, total stock price: TOTAL'
+
+        return "{}, total stock price: {}".format(store.name, store.stock_price())
+
